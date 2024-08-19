@@ -49,8 +49,18 @@ const CartItem = ({ onContinueShopping }) => {
     return item.cost * item.quantity;
   };
 
+  const countCartItems = () => {
+    let total = 0;
+    for (let i = 0; i < cart.length; i++) {
+        total += cart[i].quantity;
+    }
+
+    return total;
+  };
+
   return (
     <div className="cart-container">
+      <h2 style={{ color: 'black' }}>Total Number of Plants: {countCartItems()}</h2>
       <h2 style={{ color: 'black' }}>Total Cart Amount: ${calculateTotalAmount()}</h2>
       <div>
         {cart.map(item => (
@@ -58,7 +68,7 @@ const CartItem = ({ onContinueShopping }) => {
             <img className="cart-item-image" src={item.image} alt={item.name} />
             <div className="cart-item-details">
               <div className="cart-item-name">{item.name}</div>
-              <div className="cart-item-cost">{item.cost}</div>
+              <div className="cart-item-cost">${item.cost}</div>
               <div className="cart-item-quantity">
                 <button className="cart-item-button cart-item-button-dec" onClick={() => handleDecrement(item)}>-</button>
                 <span className="cart-item-quantity-value">{item.quantity}</span>

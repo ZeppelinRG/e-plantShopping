@@ -266,7 +266,7 @@ const handlePlantsClick = (e) => {
     }
 
     return total;
-  }
+  };
   
     return (
         <div>
@@ -300,7 +300,7 @@ const handlePlantsClick = (e) => {
                             <div className="product-title">{plant.name}</div>
                             <div className='product-description'>{plant.description}</div>
                             <div className="product-price">${plant.cost}</div>
-                            <button  className="product-button" onClick={() => handleAddToCart(plant)}>Add to Cart</button>
+                            <button  className="product-button" onClick={() => handleAddToCart(plant)} disabled={cart.find(item => item.name === plant.name)}>Add to Cart</button>
                         </div>
                         ))}
                     </div>
